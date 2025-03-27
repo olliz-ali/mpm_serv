@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Focus Label Movement</title>
+  <style>
+    /* Style the container to position the label relative to the input */
+    .input-container {
+      position: relative;
+      margin-top: 50px;
+      width: 200px;
+    }
+
+    /* Style the label */
+    label {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 14px;
+      transition: 0.3s ease; /* Smooth transition for the movement */
+      color: gray;
+    }
+
+    /* Style the input field */
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Move the label when the input field is focused */
+    input:focus + label {
+      top: -10px; /* Move the label up when the input is focused */
+      font-size: 12px; /* Optionally, you can reduce the font size */
+      color: #007bff; /* Change label color on focus */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="input-container">
+    <input type="text" id="inputField" placeholder=" ">
+    <label for="inputField">Your Label</label>
+  </div>
+
+</body>
+</html>
