@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-
+import { RouterLink } from 'vue-router';
 // State for email and password
 const email = ref('');
 const password = ref('');
@@ -78,9 +78,9 @@ const handleSubmit = () => {
     <!-- Link to Sign Up -->
     <p class="mt-4 text-sm text-gray-500">
       Don't have an account? 
-      <router-link to="/signup" class="text-blue-500 hover:underline">
+      <RouterLink to="/signup" class="text-blue-500 hover:underline">
         Sign up
-      </router-link>
+      </RouterLink>
     </p>
   </div>
 </template>

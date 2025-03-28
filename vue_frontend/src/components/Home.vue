@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 </script>
 
 
@@ -10,13 +11,13 @@ import { ref } from 'vue';
           Welcome to MyApp 🚀
         </h1>
 
-        <router-link to="/about">
+        <RouterLink to="/about">
           <button
             class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
           >
             Learn More
           </button>
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </template>

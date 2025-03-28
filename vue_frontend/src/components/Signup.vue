@@ -1,12 +1,16 @@
 <script setup>
 import { ref } from 'vue';
-
+import { RouterLink, useRoute } from 'vue-router';
 // State for form inputs
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const error = ref('');
 
+const isActiveLink = (routePath) => {
+  const route = useRoute();
+  return route.path === routePath;
+};
 // Handle form submission
 const handleSubmit = () => {
   error.value = '';
@@ -93,9 +97,9 @@ const handleSubmit = () => {
     <!-- Link to Login -->
     <p class="mt-4 text-sm text-gray-500">
       Already have an account? 
-      <router-link to="/login" class="text-blue-500 hover:underline">
+      <RouterLink to="/login" class="text-blue-500 hover:underline">
         Log in
-      </router-link>
+      </RouterLink>
     </p>
   </div>
 </template>

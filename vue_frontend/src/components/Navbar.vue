@@ -1,16 +1,18 @@
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false,
-    };
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-  },
-};
+<script setup>
+import { RouterLink,useRoute } from 'vue-router';
+import { ref } from 'vue';
+
+  const isMenuOpen = ref(false);
+  const isActiveLink = (routePath) => {
+    const route = useRoute();
+    return route.path === routePath;
+  }
+
+
+    const toggleMenu = () => {
+      isMenuOpen.value = !isMenuOpen.value;
+    }
+
 </script>
 
 <template>
@@ -19,17 +21,29 @@ export default {
         <div class="flex justify-between h-16">
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
-            <a href="/" class="text-2xl font-bold text-blue-600">MyApp</a>
+            <RouterLink to="/" class="text-2xl font-bold text-blue-600">MyApp</RouterLink>
           </div>
   
           <!-- Desktop Menu -->
           <div class="hidden md:flex space-x-8 items-center">
-            <a href="/" class="text-gray-700 hover:text-blue-500">Home</a>
-            <a href="/login" class="text-gray-700 hover:text-blue-500">Login</a>
-            <a href="/signup" class="text-gray-700 hover:text-blue-500">Signup</a>
-            <a href="/about" class="text-gray-700 hover:text-blue-500">About</a>
-            <a href="/services" class="text-gray-700 hover:text-blue-500">Services</a>
-            <a href="/contact" class="text-gray-700 hover:text-blue-500">Contact</a>
+            <RouterLink to="/" :class="[
+              isActiveLink('/') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700', 'hover:text-blue-500']">Home</RouterLink>
+            <RouterLink to="/login" :class="[
+              isActiveLink('/login') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700']">Login</RouterLink>
+            <RouterLink to="/signup" :class="[
+              isActiveLink('/signup') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700']">Signup</RouterLink>
+            <RouterLink to="/about" :class="[
+              isActiveLink('/about') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700']">About</RouterLink>
+            <RouterLink to="/services" :class="[
+              isActiveLink('/services') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700']">Services</Routerlink>
+            <RouterLink to="/contact" :class="[
+              isActiveLink('/contact') ? 'bg-blue-100' : 'hover:bg-gray-100',
+              'text-gray-700']">Contact</RouterLink>
           </div>
   
           <!-- Mobile Menu Button -->
@@ -47,12 +61,24 @@ export default {
       <!-- Mobile Menu -->
       <div v-if="isMenuOpen" class="md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="/" class="block text-gray-700 hover:text-blue-500 py-2">Home</a>
-          <a href="/login" class="block text-gray-700 hover:text-blue-500 py-2">Login</a>
-          <a href="/signup" class="block text-gray-700 hover:text-blue-500 py-2">Signup</a>
-          <a href="/about" class="block text-gray-700 hover:text-blue-500 py-2">About</a>
-          <a href="/service" class="block text-gray-700 hover:text-blue-500 py-2">Services</a>
-          <a href="/contact" class="block text-gray-700 hover:text-blue-500 py-2">Contact</a>
+          <RouterLink to="/" :class="[
+            isActiveLink('/') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">Home</RouterLink>
+          <RouterLink to="/login" :class="[
+            isActiveLink('/login') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">Login</RouterLink>
+          <RouterLink to="/signup" :class="[
+            isActiveLink('/signup') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">Signup</RouterLink>
+          <RouterLink to="/about" :class="[
+            isActiveLink('/about') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">About</RouterLink>
+          <RouterLink to="/service" :class="[
+            isActiveLink('/service') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">Services</RouterLink>
+          <RouterLink to="/contact" :class="[
+            isActiveLink('/contact') ? 'bg-blue-100' : 'hover:bg-gray-100',
+            'block text-gray-700', 'py-2']">Contact</RouterLink>
         </div>
       </div>
     </nav>
